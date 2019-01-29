@@ -1,0 +1,29 @@
+<div class="container" style="margin-top: 20px;">
+    <div style="text-align: center;font-size: 25px;">
+        Inbox
+    </div>
+
+    <div class="row">
+        <ul class="col s12 offset-s1 list_pergunta">
+            <li class="list_pergunta" *ngFor="let p of perguntas" style="border-bottom: solid;margin-bottom: 40px;">
+                <small>
+                    Em {{p.dataPergunta  | date: 'dd/MM/yyyy'}} às {{p.dataPergunta  | date: 'HH:mm'}} o usuário <a href="/home/perfil/{{p.destinatario}}">@{{p.remetente}}</a> perguntou: 
+                </small>
+                <p>
+                    {{p.descricao}}         
+                </p>
+                <div class="row" style="float: right;">
+                    <div class="col s6">
+                        <button class="btn btn-large waves-effect waves-light grey lighten-3 grey-text text-darken-1" 
+                            style="width: 100%" (click)="ignorar(p._id)">Ignorar</button>
+                    </div>
+                    <div class="col s6">
+                        <button class="btn btn-large waves-effect waves-light grey darken-3" 
+                            style="width: 100%" routerLink="/home/resposta/{{p._id}}">Responder</button>
+                    </div>
+                </div>
+                <div style="clear: both;"></div>
+            </li>
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,50 @@
+<div class="container" style="margin-top: 20px;">
+    <div style="text-align: center;font-size: 25px;">
+        Minhas Perguntas!
+    </div>
+
+    <div class="row">
+        <div class="col s4">
+            <form #formPergunta="ngForm">
+                <div class="input-field col s12">
+                    <div style="color: #9b9b9b; margin-bottom: 5px;">Perguntar para</div>
+                    <select name="usuario" id="usuario" #usuario="ngModel" required [(ngModel)]="pergunta.destinatario" class="browser-default">
+                        <option *ngFor="let u of usuarios" value="{{u._id}}">
+                            {{u.nome}}
+                        </option>
+                    </select>
+                </div>
+
+                <div class="text-area col s12">
+                    <div style="color: #9b9b9b; margin-bottom: 5px;">Sua pergunta</div>
+                    <textarea #descricao="ngModel" style="border: solid 1px #cecece;padding: 10px;height: 100px;" required [(ngModel)]="pergunta.descricao" name="descricao" id="descricao"></textarea>
+                </div>
+
+                <div class="col s12">
+                    <button class="btn btn-large waves-effect waves-light grey darken-3" 
+                        style="width: 100%" [disabled]="formPergunta.invalid" (click)="perguntar()">Perguntar</button>
+                </div>
+            </form>
+        </div>
+
+        <ul class="col s8 list_pergunta">
+            <li class="list_pergunta" *ngFor="let p of perguntas" style="border-bottom: solid;margin-bottom: 40px;">
+                <small>
+                    Em {{p.dataPergunta  | date: 'dd/MM/yyyy'}} às {{p.dataPergunta  | date: 'HH:mm'}} eu perguntei para: <a href="/home/perfil/{{p.destinatario}}">@{{p.destinatario}}</a> 
+                </small>
+                
+                <p>
+                    {{p.descricao}}         
+                </p>
+
+                <div style="border: solid 1px #cecece;padding: 10px;margin-bottom: 10px;" *ngIf="p.resposta">
+                    <div style="font-size: 9px;">
+                        <a href="/home/perfil/{{p.destinatario}}">@{{p.destinatario}}</a> respondeu em {{p.dataResposta  | date: 'dd/MM/yyyy'}} às {{p.dataResposta  | date: 'HH:mm'}}: 
+                    </div>
+                    {{p.resposta}}
+                </div>
+                <div style="clear: both;"></div>
+            </li>
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,85 @@
+<div class="bg_novo_user">
+
+    <div class="valign-wrapper fullsize">
+
+        <div class="valign z-depth-1 form_cadastro">
+            <div class="row">
+                <div class="col s12" style="text-align : center">
+                    <h5>Microblog | Novo Usuario</h5>
+                </div>
+            </div>
+            <div class="row">
+                <form class="col s12" #formRegistro="ngForm">
+
+                    <div class="input-field col s12">
+                        <div *ngIf="conteudoImg != null" style="height: 200px; width: 200px; border: solid 2px; border-radius: 50%; margin: auto; overflow: hidden;">
+                            <img [src]="conteudoImg" style="width: 100%;height: auto;">
+                        </div>
+
+                        <div style="text-align: center; font-size: 20px;">
+                            Sua foto
+                        </div>
+
+                        <input style="text-align: center" type="file" name="foto" required [(ngModel)]="usuario.foto" id="foto" #foto (change)="selecionar($event)">
+
+                        <small class="red-text" *ngIf="foto.invalid">
+                            Campo obrigatório!
+                        </small>
+                    </div>
+
+                    <div class="input-field col s12">
+                        <input type="text" name="login" id="login" required [(ngModel)]="usuario.login" #login="ngModel" />
+                        <label for="login">Login</label>
+                        <small class="red-text" *ngIf="login.invalid && login.touched">
+                            Campo obrigatório!
+                        </small>
+                    </div>
+
+                    <div class="input-field col s12">
+                        <input type="password" name="senha" id="senha" required [(ngModel)]="usuario.senha" #senha="ngModel" />
+                        <label for="senha">Senha</label>
+                        <small class="red-text" *ngIf="senha.invalid && senha.touched">
+                            Campo obrigatório!
+                        </small>
+                    </div>
+
+                    <div class="input-field col s12">
+                        <input type="text" name="nome" id="nome" required [(ngModel)]="usuario.nome" #nome="ngModel" />
+                        <label for="nome">Nome</label>
+                        <small class="red-text" *ngIf="nome.invalid && nome.touched">
+                            Campo obrigatório!
+                        </small>
+                    </div>
+
+                    <div class="input-field col s12">
+                        <input type="email" name="email" id="email" required [(ngModel)]="usuario.email" #email="ngModel" />
+                        <label for="email">Email</label>
+                        <small class="red-text" *ngIf="email.invalid && email.touched">
+                            Campo obrigatório!
+                        </small>
+                    </div>
+
+                    <div class="input-field col s12">
+                        <input type="text" name="bio" id="bio" required [(ngModel)]="usuario.bio" #bio="ngModel" />
+                        <label for="bio">Bio</label>
+                        <small class="red-text" *ngIf="bio.invalid && bio.touched">
+                            Campo obrigatório!
+                        </small>
+                    </div>
+                </form>
+            </div>
+            <div class="row">
+                <div class="col s6">
+                    <button class="btn btn-large waves-effect waves-light grey darken-3" 
+                        style="width: 100%" [disabled]="formRegistro.invalid" (click)="salvar()" >Salvar</button>
+                </div>
+                <div class="col s6">
+                    <button class="btn btn-large waves-effect waves-light grey lighten-3 grey-text text-darken-1" 
+                        style="width: 100%" routerLink="/login">Cancelar</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>

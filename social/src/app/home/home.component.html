@@ -1,0 +1,26 @@
+<nav>
+    <div class="nav-wrapper grey darken-3">
+        <div class="container">
+            <div class="brand-logo">Microblog</div>
+            <ul class="right">
+                <li>
+                    <a routerLink="/home/inbox">Inbox</a>
+                </li>
+
+                <li>
+                    <a routerLink="/home/perfil">Meu Perfil</a>
+                </li>
+
+                <li>
+                    <a href="/home/pergunta">Minhas Perguntas</a>
+                </li>
+
+                <li>
+                    <a href="#" (click)="sair()">Sair</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<router-outlet></router-outlet>
