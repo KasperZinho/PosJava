@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row">
+  <div class="col-md-2"></div>
+  <form class="col-md-8" style="margin-top: 55px">
+      
+          <div class="form-group">
+            <label for="departamento">Departamento</label>
+            <select class="form-control" id="departamento" name="departamento" [(ngModel)]="chamado.departamento">
+              <option *ngFor="let d of departamentos" value="{{d._id}}">
+                  {{d.nome}}
+              </option>              
+            </select>
+          </div>
+
+          <div class="form-group">
+              <label for="solicitante">Solicitante:</label>
+              <input type="email" class="form-control" id="solicitante" name="solicitante" placeholder="Seu nome" [(ngModel)]="chamado.solicitante">
+            </div>
+            
+
+          <div class="form-group">
+            <label for="descricao">Descrição</label>
+            <textarea class="form-control" id="descricao" name="descricao"
+            rows="3" [(ngModel)]="chamado.descricao"></textarea>
+          </div>
+          <input type="submit" class="btn btn-primary" value="Enviar" (click)="salvar()">
+          <input type="reset" value="Limpar" class="btn btn-secondary">
+
+  </form>
+  <div class="col-md-2"></div>
+</div>
+</div>
