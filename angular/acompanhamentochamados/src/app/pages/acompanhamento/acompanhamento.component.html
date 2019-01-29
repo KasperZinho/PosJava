@@ -1,0 +1,32 @@
+<div class="container">
+
+    <div class="row">
+  
+      <div class="col-md-2"></div>
+  
+      <div class="col-md-8" style="margin-top: 55px">
+        <div class="list-group">
+  
+          <div class="list-group">
+            <span *ngFor="let c of chamados" class="list-group-item" >
+              <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">Departamento {{c.departamento.nome}}</h5>
+                <small>{{c.data | date : 'dd/MM/yyyy HH:mm'}}</small>
+              </div>
+              <p class="mb-1">Solicitante: {{c.solicitante}}</p>
+              <small class="mb-5">{{c.descricao}}</small>
+              <b>
+                <div *ngIf="c.status == 1">Status: Não analisado</div>
+                <div *ngIf="c.status == 2">Status: Em análise</div>
+                <div *ngIf="c.status == 3">Status: Em andamento</div>
+                <div *ngIf="c.status == 4">Status: Concluido</div>
+              </b>              
+  
+            </span>
+          </div>
+        </div>
+  
+        <div class="col-md-2"></div>
+      </div>
+    </div>
+  </div>
